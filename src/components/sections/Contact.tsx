@@ -5,25 +5,48 @@ import { useRef, useState } from 'react'
 import { Mail, MessageSquare, Phone, Send, CheckCircle } from 'lucide-react'
 
 const contactInfo = [
-  { icon: Mail, label: 'Email', value: 'hello@tudino.dev', color: '#4f8ef7' },
-  { icon: Phone, label: 'Phone', value: '+1 (555) 000-0000', color: '#8b5cf6' },
-  { icon: MessageSquare, label: 'Response time', value: 'Within 24 hours', color: '#06b6d4' },
+  { icon: Mail, label: 'Email', value: 'nick@tudino.dev', color: '#4f8ef7' },
+  { icon: Phone, label: 'Phone', value: '+1 (203) 767-0013', color: '#8b5cf6' },
 ]
 
-const budgets = ['Under $3k', '$3k – $7k', '$7k – $15k', '$15k+']
 const projectTypes = ['New Website', 'Redesign', 'E-Commerce', 'Web App', 'Branding', 'Other']
+
+const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID
 
 export default function Contact() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
   const [submitted, setSubmitted] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [error, setError] = useState('')
   const [form, setForm] = useState({
-    name: '', email: '', company: '', projectType: '', budget: '', message: '',
+    name: '', email: '', company: '', projectType: '', message: '',
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSubmitted(true)
+    if (!FORMSPREE_ID) {
+      setError('Contact form not configured yet. Please email nick@tudino.dev directly.')
+      return
+    }
+    setSending(true)
+    setError('')
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(form),
+      })
+      if (res.ok) {
+        setSubmitted(true)
+      } else {
+        setError('Something went wrong. Please try again or email nick@tudino.dev directly.')
+      }
+    } catch {
+      setError('Something went wrong. Please try again or email nick@tudino.dev directly.')
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -54,7 +77,7 @@ export default function Contact() {
             transition={{ delay: 0.2 }}
             className="text-[#8888aa] text-lg max-w-xl mx-auto"
           >
-            Tell us about your project. We&apos;ll respond within 24 hours with a tailored proposal.
+            Tell us about your project.
           </motion.p>
         </div>
 
@@ -113,7 +136,7 @@ export default function Contact() {
                   <CheckCircle size={56} className="text-emerald-400 mx-auto mb-4" />
                   <h3 className="text-2xl font-bold text-white mb-2">Message Sent!</h3>
                   <p className="text-[#8888aa]">
-                    Thanks for reaching out. We&apos;ll review your project and get back to you within 24 hours.
+                    Thanks for reaching out. We&apos;ll review your project and get back to you as soon as possible.
                   </p>
                 </div>
               ) : (
@@ -162,11 +185,10 @@ export default function Contact() {
                           type="button"
                           key={type}
                           onClick={() => setForm({ ...form, projectType: type })}
-                          className={`text-[12px] font-semibold px-3 py-1.5 rounded-lg border transition-all ${
-                            form.projectType === type
-                              ? 'bg-[#4f8ef7]/20 border-[#4f8ef7]/50 text-[#4f8ef7]'
-                              : 'border-white/[0.08] text-[#8888aa] hover:border-white/20'
-                          }`}
+                          className={`text-[12px] font-semibold px-3 py-1.5 rounded-lg border transition-all ${form.projectType === type
+                            ? 'bg-[#4f8ef7]/20 border-[#4f8ef7]/50 text-[#4f8ef7]'
+                            : 'border-white/[0.08] text-[#8888aa] hover:border-white/20'
+                            }`}
                         >
                           {type}
                         </button>
@@ -174,25 +196,7 @@ export default function Contact() {
                     </div>
                   </div>
 
-                  <div>
-                    <label className="block text-[12px] font-semibold text-[#8888aa] mb-2 uppercase tracking-wider">Budget Range</label>
-                    <div className="flex flex-wrap gap-2">
-                      {budgets.map((b) => (
-                        <button
-                          type="button"
-                          key={b}
-                          onClick={() => setForm({ ...form, budget: b })}
-                          className={`text-[12px] font-semibold px-3 py-1.5 rounded-lg border transition-all ${
-                            form.budget === b
-                              ? 'bg-[#8b5cf6]/20 border-[#8b5cf6]/50 text-[#8b5cf6]'
-                              : 'border-white/[0.08] text-[#8888aa] hover:border-white/20'
-                          }`}
-                        >
-                          {b}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
+
 
                   <div>
                     <label className="block text-[12px] font-semibold text-[#8888aa] mb-2 uppercase tracking-wider">Tell Me About Your Project *</label>
@@ -206,8 +210,16 @@ export default function Contact() {
                     />
                   </div>
 
-                  <button type="submit" className="btn-primary w-full flex items-center justify-center gap-2">
-                    <span className="relative z-10">Send My Project Brief</span>
+                  {error && (
+                    <p className="text-red-400 text-[13px] text-center">{error}</p>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={sending}
+                    className="btn-primary w-full flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                  >
+                    <span className="relative z-10">{sending ? 'Sending…' : 'Send My Project Brief'}</span>
                     <Send size={15} className="relative z-10" />
                   </button>
                 </form>
