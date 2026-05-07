@@ -61,7 +61,7 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
-      className="glass-card glow-border p-8 group cursor-default relative overflow-hidden transition-all duration-300 hover:-translate-y-1"
+      className="glass-card glow-border p-8 group cursor-default relative overflow-hidden transition-transform duration-300 [@media(hover:hover)]:hover:-translate-y-1"
     >
       {/* Background gradient on hover */}
       <div

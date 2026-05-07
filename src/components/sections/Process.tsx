@@ -91,7 +91,7 @@ export default function Process() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                  className="glass-card p-6 group hover:-translate-y-1 transition-all duration-300 relative"
+                  className="glass-card p-6 group transition-transform duration-300 [@media(hover:hover)]:hover:-translate-y-1 relative"
                 >
                   {/* Number */}
                   <div className="text-[11px] font-black tracking-widest text-[#333355] mb-4 font-mono">

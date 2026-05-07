@@ -10,8 +10,8 @@ const projects = [
     category: 'Gym & Personal Training',
     description: 'A bold, high-energy website for a personal training brand built to convert visitors into members. Features class schedules, trainer profiles, and a seamless online inquiry flow.',
     tags: ['Web Design', 'Mobile-First', 'Branding'],
-    color: '#f97316',
-    gradient: 'from-[#f97316] to-[#ef4444]',
+    color: '#e11d48',
+    gradient: 'from-[#e11d48] to-[#9f1239]',
     url: 'www.dogpoundfit.com',
     icon: Dumbbell,
     mockLayout: 'gym',
@@ -100,7 +100,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
-      className="glass-card overflow-hidden group cursor-pointer hover:-translate-y-1 transition-all duration-300 block"
+      className="glass-card overflow-hidden group cursor-pointer transition-transform duration-300 [@media(hover:hover)]:hover:-translate-y-1 block"
     >
       {/* Mock browser window */}
       <div className="relative h-56 overflow-hidden">
@@ -166,7 +166,7 @@ export default function Work() {
 
   return (
     <section id="work" className="relative py-32 overflow-hidden">
-      <div className="orb w-[400px] h-[400px] bg-[#f97316] top-1/2 right-[-200px] opacity-[0.04]" />
+      <div className="orb w-[400px] h-[400px] bg-[#4f8ef7] top-1/2 right-[-200px] opacity-[0.04]" />
 
       <div className="max-w-7xl mx-auto px-6" ref={ref}>
         <div className="text-center mb-16">

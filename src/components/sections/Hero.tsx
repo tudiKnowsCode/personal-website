@@ -10,10 +10,8 @@ function TypingWord() {
   const [index, setIndex] = useState(0)
   const [displayed, setDisplayed] = useState('')
   const [deleting, setDeleting] = useState(false)
-  const [pause, setPause] = useState(false)
 
   useEffect(() => {
-    if (pause) return
     const word = WORDS[index]
     let timeout: NodeJS.Timeout
 
@@ -21,8 +19,6 @@ function TypingWord() {
       if (displayed.length < word.length) {
         timeout = setTimeout(() => setDisplayed(word.slice(0, displayed.length + 1)), 80)
       } else {
-        timeout = setTimeout(() => setPause(true), 1800)
-        setPause(false)
         timeout = setTimeout(() => setDeleting(true), 2000)
       }
     } else {
@@ -35,12 +31,16 @@ function TypingWord() {
     }
 
     return () => clearTimeout(timeout)
-  }, [displayed, deleting, index, pause])
+  }, [displayed, deleting, index])
 
   return (
     <span className="gradient-text">
       {displayed}
-      <span className="animate-blink text-[#4f8ef7]">|</span>
+      <motion.span
+        animate={{ opacity: [1, 1, 0, 0] }}
+        transition={{ duration: 1, repeat: Infinity, ease: 'linear', times: [0, 0.5, 0.5, 1] }}
+        className="text-[#4f8ef7]"
+      >|</motion.span>
     </span>
   )
 }
