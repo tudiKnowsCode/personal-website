@@ -20,7 +20,7 @@ export default function Contact() {
   const [sending, setSending] = useState(false)
   const [error, setError] = useState('')
   const [form, setForm] = useState({
-    name: '', email: '', company: '', projectType: '', message: '',
+    name: '', email: '', phone: '', company: '', projectType: '', message: '',
   })
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -164,6 +164,17 @@ export default function Contact() {
                         className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-white text-[14px] placeholder-[#555577] focus:outline-none focus:border-[#4f8ef7]/50 transition-colors"
                       />
                     </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-[12px] font-semibold text-[#8888aa] mb-2 uppercase tracking-wider">Phone</label>
+                    <input
+                      type="tel"
+                      value={form.phone}
+                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                      placeholder="(203) 555-0100"
+                      className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-white text-[14px] placeholder-[#555577] focus:outline-none focus:border-[#4f8ef7]/50 transition-colors"
+                    />
                   </div>
 
                   <div>
