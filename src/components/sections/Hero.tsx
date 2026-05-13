@@ -139,7 +139,7 @@ export default function Hero() {
       <div className="orb w-[500px] h-[500px] bg-[#8b5cf6] bottom-[-150px] right-[-150px] opacity-[0.08]" />
       <div className="orb w-[300px] h-[300px] bg-[#06b6d4] top-[40%] left-[60%] opacity-[0.05]" />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 text-center pt-32 pb-16">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 text-center pt-32 pb-32">
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

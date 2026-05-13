@@ -2,7 +2,8 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { ExternalLink, Dumbbell, BookOpen } from 'lucide-react'
+import Image from 'next/image'
+import { ExternalLink, Dumbbell, BookOpen, Home } from 'lucide-react'
 
 const projects = [
   {
@@ -12,9 +13,11 @@ const projects = [
     tags: ['Web Design', 'Mobile-First', 'Branding'],
     color: '#e11d48',
     gradient: 'from-[#e11d48] to-[#9f1239]',
-    url: 'www.dogpoundfit.com',
+    displayUrl: 'www.dogpoundfit.com',
+    href: 'https://www.dogpoundfit.com',
     icon: Dumbbell,
-    mockLayout: 'gym',
+    image: '/jen.png',
+    underConstruction: false,
   },
   {
     title: 'Tudino Learning',
@@ -23,70 +26,69 @@ const projects = [
     tags: ['Web Design', 'Booking', 'SEO'],
     color: '#4f8ef7',
     gradient: 'from-[#4f8ef7] to-[#8b5cf6]',
-    url: 'tudinolearning.com/',
+    displayUrl: 'tudinolearning.com',
+    href: 'https://alyssa-website-new.vercel.app/',
     icon: BookOpen,
-    mockLayout: 'tutor',
+    image: '/alyssa.png',
+    underConstruction: true,
+  },
+  {
+    title: 'Sharon Tudino Real Estate',
+    category: 'Real Estate',
+    description: 'A polished, professional website for a real estate agent. Highlights property listings, builds trust with an agent bio, and drives inquiries with a streamlined contact experience.',
+    tags: ['Web Design', 'Real Estate', 'SEO'],
+    color: '#d97706',
+    gradient: 'from-[#d97706] to-[#92400e]',
+    displayUrl: 'sharon-tudino-realty.com',
+    href: 'https://sharon-tudino-realty.vercel.app/',
+    icon: Home,
+    image: '/sharon.png',
+    underConstruction: true,
   },
 ]
 
-function GymMockup({ color }: { color: string }) {
+function SitePreview({ src, alt }: { src: string; alt: string }) {
   return (
-    <div className="absolute inset-0 pt-8 flex flex-col overflow-hidden">
-      {/* Hero bar */}
-      <div className="w-full h-20 flex items-center justify-center relative" style={{ background: `${color}22` }}>
-        <div className="absolute inset-0" style={{ background: `linear-gradient(135deg, ${color}30, transparent)` }} />
-        <div className="w-24 h-4 rounded bg-white/30" />
-        <div className="absolute right-4 flex gap-2">
-          <div className="w-12 h-5 rounded" style={{ background: `${color}60` }} />
-        </div>
-      </div>
-      {/* Content rows */}
-      <div className="flex gap-2 p-3 flex-1">
-        <div className="flex-1 rounded-lg flex flex-col gap-2 p-2" style={{ background: `${color}10` }}>
-          <div className="w-full h-2.5 rounded bg-white/20" />
-          <div className="w-3/4 h-2 rounded bg-white/10" />
-          <div className="w-1/2 h-2 rounded bg-white/10" />
-          <div className="mt-2 w-16 h-5 rounded" style={{ background: `${color}50` }} />
-        </div>
-        <div className="flex-1 rounded-lg flex flex-col gap-2 p-2" style={{ background: `${color}10` }}>
-          <div className="w-full h-2.5 rounded bg-white/20" />
-          <div className="w-2/3 h-2 rounded bg-white/10" />
-          <div className="w-1/2 h-2 rounded bg-white/10" />
-          <div className="mt-2 w-16 h-5 rounded" style={{ background: `${color}50` }} />
-        </div>
+    <div className="absolute inset-x-0 bottom-0 top-8 overflow-hidden">
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        className="object-cover object-top"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      />
+    </div>
+  )
+}
+
+function UnderConstructionOverlay() {
+  const label = '⚠ UNDER CONSTRUCTION'
+  return (
+    <div className="absolute inset-x-0 bottom-0 top-8 z-20 pointer-events-none flex items-center justify-center overflow-hidden">
+      <div
+        className="w-[160%] py-2.5 flex items-center gap-8 flex-shrink-0"
+        style={{
+          background: '#FACC15',
+          transform: 'rotate(-12deg)',
+          boxShadow: '0 6px 24px rgba(0,0,0,0.5)',
+        }}
+      >
+        {Array.from({ length: 8 }).map((_, i) => (
+          <span
+            key={i}
+            className="text-black font-black text-[11px] tracking-[0.2em] uppercase whitespace-nowrap flex-shrink-0"
+          >
+            {label}
+          </span>
+        ))}
       </div>
     </div>
   )
 }
 
-function TutorMockup({ color }: { color: string }) {
-  return (
-    <div className="absolute inset-0 pt-8 flex flex-col overflow-hidden">
-      {/* Nav */}
-      <div className="w-full h-8 flex items-center px-4 gap-3" style={{ background: `${color}10` }}>
-        <div className="w-16 h-2.5 rounded bg-white/30" />
-        <div className="flex-1" />
-        {[1, 2, 3].map(n => <div key={n} className="w-10 h-1.5 rounded bg-white/15" />)}
-        <div className="w-12 h-4 rounded" style={{ background: `${color}50` }} />
-      </div>
-      {/* Two-col layout */}
-      <div className="flex gap-3 p-3 flex-1">
-        <div className="flex-1 flex flex-col gap-2">
-          <div className="w-3/4 h-3 rounded bg-white/30" />
-          <div className="w-full h-2 rounded bg-white/15" />
-          <div className="w-2/3 h-2 rounded bg-white/15" />
-          <div className="mt-1 flex gap-2">
-            <div className="w-14 h-5 rounded" style={{ background: `${color}60` }} />
-            <div className="w-14 h-5 rounded bg-white/10" />
-          </div>
-        </div>
-        <div className="w-24 rounded-lg" style={{ background: `${color}20` }} />
-      </div>
-    </div>
-  )
-}
+type Project = typeof projects[0]
 
-function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
+function ProjectCard({ project, index }: { project: Project; index: number }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-60px' })
   const Icon = project.icon
@@ -94,7 +96,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
   return (
     <motion.a
       ref={ref}
-      href={`https://${project.url}`}
+      href={project.href}
       target="_blank"
       rel="noopener noreferrer"
       initial={{ opacity: 0, y: 40 }}
@@ -109,21 +111,18 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
           <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
           <div className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
           <div className="flex-1 mx-3 h-4 rounded bg-[#1a1a2e] flex items-center px-2">
-            <span className="text-[9px] text-[#555577] font-mono truncate">{project.url}</span>
+            <span className="text-[9px] text-[#555577] font-mono truncate">{project.displayUrl}</span>
           </div>
         </div>
 
-        {/* Gradient backdrop */}
-        <div className={`absolute inset-0 pt-8 bg-gradient-to-br ${project.gradient} opacity-20 group-hover:opacity-30 transition-opacity duration-500`} />
+        {/* Site preview image */}
+        <SitePreview src={project.image} alt={project.title} />
 
-        {/* Custom mockup layout */}
-        {project.mockLayout === 'gym'
-          ? <GymMockup color={project.color} />
-          : <TutorMockup color={project.color} />
-        }
+        {/* Under construction overlay */}
+        {project.underConstruction && <UnderConstructionOverlay />}
 
         {/* Hover overlay */}
-        <div className="absolute inset-0 bg-[#07070f]/85 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pt-8">
+        <div className="absolute inset-0 bg-[#07070f]/85 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pt-8 z-30">
           <div className="flex items-center gap-2 glass-card px-4 py-2 text-sm font-semibold text-white">
             <ExternalLink size={14} />
             View Project
@@ -196,7 +195,7 @@ export default function Work() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {projects.map((p, i) => (
             <ProjectCard key={p.title} project={p} index={i} />
           ))}
