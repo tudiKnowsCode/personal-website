@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -28,9 +26,11 @@ html {
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 /* Custom scrollbar */
@@ -53,6 +53,7 @@ body {
   background-clip: text;
   background-size: 200% 200%;
   animation: gradientShift 6s ease infinite;
+  will-change: background-position;
 }
 
 @keyframes gradientShift {
@@ -67,6 +68,7 @@ body {
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 20px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -85,12 +87,14 @@ body {
     radial-gradient(ellipse at 50% 50%, rgba(6, 182, 212, 0.05) 0%, transparent 70%);
 }
 
-/* Animated orbs */
+/* Animated orbs — promoted to own compositing layer */
 .orb {
   position: absolute;
   border-radius: 50%;
   filter: blur(80px);
   pointer-events: none;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 /* Glowing border */
@@ -108,7 +112,7 @@ body {
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity 0.3s ease;
 }
 .glow-border:hover::before {
   opacity: 1;
@@ -123,7 +127,7 @@ body {
   font-weight: 600;
   font-size: 15px;
   letter-spacing: 0.02em;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
 }
@@ -133,7 +137,7 @@ body {
   inset: 0;
   background: linear-gradient(135deg, #6aa3ff, #a07cf8);
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity 0.3s ease;
 }
 .btn-primary:hover::before { opacity: 1; }
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 20px 40px rgba(79, 142, 247, 0.3); }
@@ -147,7 +151,7 @@ body {
   font-size: 15px;
   letter-spacing: 0.02em;
   border: 1px solid rgba(255, 255, 255, 0.15);
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
 }
 .btn-secondary:hover {
   border-color: rgba(79, 142, 247, 0.5);
@@ -180,4 +184,14 @@ body {
   opacity: 0.02;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   z-index: 9999;
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .gradient-text {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
 }
