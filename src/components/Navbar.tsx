@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Zap } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
+import Image from 'next/image'
 
 const links = [
   { label: 'Services', href: '#services' },
@@ -36,9 +37,7 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           <a href="#" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#4f8ef7] to-[#8b5cf6] flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover:shadow-blue-500/40 transition-shadow">
-              <Zap size={16} className="text-white" strokeWidth={2.5} />
-            </div>
+            <Image src="/logo.png" alt="Tudino Web Development" width={32} height={32} className="rounded-lg" />
             <span className="font-bold text-[15px] tracking-tight text-white">
               Tudino<span className="text-[#4f8ef7]">.</span>dev
             </span>

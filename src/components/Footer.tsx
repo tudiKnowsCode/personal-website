@@ -1,6 +1,7 @@
 'use client'
 
-import { Zap, ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
+import Image from 'next/image'
 
 const GithubIcon = () => (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
@@ -43,9 +44,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
           <div className="col-span-2 md:col-span-1">
             <a href="#" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#4f8ef7] to-[#8b5cf6] flex items-center justify-center">
-                <Zap size={16} className="text-white" strokeWidth={2.5} />
-              </div>
+              <Image src="/logo.png" alt="Tudino Web Development" width={32} height={32} className="rounded-lg" />
               <span className="font-bold text-[15px] text-white">
                 Tudino<span className="text-[#4f8ef7]">.</span>dev
               </span>
