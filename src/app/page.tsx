@@ -28,6 +28,7 @@ const jsonLd = {
         sameAs: [
           'https://github.com/tudiKnowsCode',
           'https://www.linkedin.com/in/ntudino/',
+          'https://www.instagram.com/tudino.dev/',
         ],
       },
       address: {
