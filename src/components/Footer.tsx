@@ -76,7 +76,7 @@ export default function Footer() {
                 <LinkedinIcon />
               </a>
               <a
-                href="https://www.instagram.com/tudino.dev/"
+                href="https://www.instagram.com/tudinowebdev/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-8 h-8 glass-card flex items-center justify-center text-[#8888aa] hover:text-white transition-colors"
