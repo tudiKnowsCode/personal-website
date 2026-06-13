@@ -71,7 +71,7 @@ export default function About() {
             </h2>
 
             <p className="text-[#8888aa] text-lg leading-relaxed mb-6">
-              Hi, I&apos;m Nick — a developer and designer obsessed with building websites that
+              Hi, I&apos;m Nick, a developer and designer obsessed with building websites that
               actually move the needle. I started Tudino Web Development to help small businesses and
               entrepreneurs get the professional online presence they deserve, without the agency
               price tag or the runaround.
@@ -79,7 +79,7 @@ export default function About() {
 
             <p className="text-[#8888aa] text-lg leading-relaxed mb-10">
               Every client gets my full attention from first call to launch day. I care about
-              your results the same way you do — because your success is how I build my reputation.
+              your results the same way you do, because your success is how I build my reputation.
               No templates, no shortcuts, no handing you off to a junior. Just great work, done right.
             </p>
 

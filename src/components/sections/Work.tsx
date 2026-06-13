@@ -43,7 +43,7 @@ const projects = [
     href: 'https://sharon-tudino-realty.vercel.app/',
     icon: Home,
     image: '/sharon.png',
-    underConstruction: true,
+    underConstruction: false,
   },
 ]
 
@@ -191,7 +191,7 @@ export default function Work() {
             transition={{ delay: 0.2 }}
             className="text-[#8888aa] text-lg max-w-xl mx-auto"
           >
-            Every project is built with care, purpose, and a relentless focus on what matters — growing your business.
+            Every project is built with care, purpose, and a relentless focus on what matters: growing your business.
           </motion.p>
         </div>
 

@@ -9,7 +9,7 @@ const steps = [
     number: '01',
     icon: MessageSquare,
     title: 'Discovery Call',
-    description: 'We start by understanding your business, your audience, and your goals. No templates — your strategy is built from scratch.',
+    description: 'We start by understanding your business, your audience, and your goals. No templates. Your strategy is built from scratch.',
     color: '#4f8ef7',
   },
   {
@@ -37,7 +37,7 @@ const steps = [
     number: '05',
     icon: Headphones,
     title: 'Ongoing Support',
-    description: '30 days of post-launch support is included with every project — bug fixes, tweaks, and questions covered. After that, flexible care plans keep your site growing.',
+    description: '30 days of post-launch support is included with every project: bug fixes, tweaks, and questions covered. After that, flexible care plans keep your site growing.',
     color: '#f59e0b',
   },
 ]

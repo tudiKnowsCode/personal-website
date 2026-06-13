@@ -110,7 +110,7 @@ export default function Contact() {
             <div className="glass-card p-6">
               <div className="text-[14px] font-bold text-white mb-3">Why Tudino Web Development?</div>
               {[
-                'Custom designs — no templates, ever',
+                'Custom designs, no templates, ever',
                 'Fixed-price quotes, no surprises',
                 'Direct access to your developer',
                 '30-day post-launch support included',

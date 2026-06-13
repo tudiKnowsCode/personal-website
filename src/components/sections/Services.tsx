@@ -23,7 +23,7 @@ const services = [
   {
     icon: Smartphone,
     title: 'Mobile-First Responsive',
-    description: 'Every device, every screen size — pixel-perfect. Your site looks and performs flawlessly everywhere.',
+    description: 'Every device, every screen size: pixel-perfect. Your site looks and performs flawlessly everywhere.',
     color: '#06b6d4',
     gradient: 'from-[#06b6d4]/20 to-transparent',
   },
@@ -37,14 +37,14 @@ const services = [
   {
     icon: Palette,
     title: 'Brand & Visual Identity',
-    description: 'Complete brand systems — logo, color palette, typography — that make you unforgettable in your market.',
+    description: 'Complete brand systems including logo, color palette, and typography that make you unforgettable in your market.',
     color: '#f59e0b',
     gradient: 'from-[#f59e0b]/20 to-transparent',
   },
   {
     icon: ShieldCheck,
     title: 'Maintenance & Support',
-    description: 'Ongoing care packages to keep your site secure, updated, and performing at peak — so you can focus on business.',
+    description: 'Ongoing care packages to keep your site secure, updated, and performing at peak, so you can focus on business.',
     color: '#ec4899',
     gradient: 'from-[#ec4899]/20 to-transparent',
   },
