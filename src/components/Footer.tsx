@@ -21,10 +21,13 @@ const InstagramIcon = () => (
   </svg>
 )
 
-const links = {
-  Services: ['Web Design', 'Development', 'E-Commerce', 'Branding', 'SEO'],
-  Company: ['About', 'Work', 'Process', 'Contact'],
-}
+const navLinks = [
+  { label: 'Services', href: '#services' },
+  { label: 'Work', href: '#work' },
+  { label: 'Concepts', href: '#concepts' },
+  { label: 'Process', href: '#process' },
+  { label: 'About', href: '#about' },
+]
 
 export default function Footer() {
   return (
@@ -47,7 +50,7 @@ export default function Footer() {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-10 mb-12">
           <div className="col-span-2 md:col-span-1">
             <a href="#" className="flex items-center gap-2 mb-4">
               <Image src="/logo.png" alt="Tudino Web Development" width={32} height={32} className="rounded-lg" />
@@ -56,7 +59,7 @@ export default function Footer() {
               </span>
             </a>
             <p className="text-[13px] text-[#8888aa] leading-relaxed mb-6 max-w-[200px]">
-              Premium web development for ambitious businesses.
+              Custom websites for small businesses that would rather stand out than blend in.
             </p>
             <div className="flex gap-3 justify-center">
               <a
@@ -86,25 +89,23 @@ export default function Footer() {
             </div>
           </div>
 
-          {Object.entries(links).map(([category, items]) => (
-            <div key={category}>
-              <div className="text-[12px] font-bold tracking-widest text-[#8888aa] uppercase mb-4">
-                {category}
-              </div>
-              <ul className="space-y-2.5">
-                {items.map((item) => (
-                  <li key={item}>
-                    <a
-                      href={`#${item.toLowerCase().replace(/\s/g, '-')}`}
-                      className="text-[13px] text-[#666688] hover:text-white transition-colors"
-                    >
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+          <div>
+            <div className="text-[12px] font-bold tracking-widest text-[#8888aa] uppercase mb-4">
+              Explore
             </div>
-          ))}
+            <ul className="space-y-2.5">
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    className="text-[13px] text-[#666688] hover:text-white transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
           <div>
             <div className="text-[12px] font-bold tracking-widest text-[#8888aa] uppercase mb-4">Contact</div>
@@ -124,7 +125,7 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Tudino Web Development. All rights reserved.
           </p>
           <p className="text-[12px] text-[#555577]">
-            Crafted with precision in Manchester, CT
+            Designed and built in Manchester, CT
           </p>
         </div>
       </div>

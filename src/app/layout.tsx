@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     siteName: 'Tudino Web Development',
     title: 'Tudino Web Development | Premium Websites for Ambitious Businesses',
     description:
-      'We build visually stunning, conversion-focused websites that make your business impossible to ignore. Every pixel crafted for impact.',
+      'I build visually stunning, conversion-focused websites that make your business impossible to ignore. Every pixel crafted for impact.',
     images: [
       {
         url: '/og-image.png',
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Tudino Web Development | Premium Websites for Ambitious Businesses',
     description:
-      'We build visually stunning, conversion-focused websites that make your business impossible to ignore.',
+      'I build visually stunning, conversion-focused websites that make your business impossible to ignore.',
     images: ['/og-image.png'],
     creator: '@tudinodev',
   },

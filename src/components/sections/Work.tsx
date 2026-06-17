@@ -11,8 +11,6 @@ const projects = [
     category: 'Gym & Personal Training',
     description: 'A bold, high-energy website for a personal training brand built to convert visitors into members. Features class schedules, trainer profiles, and a seamless online inquiry flow.',
     tags: ['Web Design', 'Mobile-First', 'Branding'],
-    color: '#e11d48',
-    gradient: 'from-[#e11d48] to-[#9f1239]',
     displayUrl: 'www.dogpoundfit.com',
     href: 'https://www.dogpoundfit.com',
     icon: Dumbbell,
@@ -24,8 +22,6 @@ const projects = [
     category: 'Education & Tutoring',
     description: 'A clean, trust-building site for a private tutor. Showcases subjects, student success stories, and makes it effortless for parents to book sessions online.',
     tags: ['Web Design', 'Booking', 'SEO'],
-    color: '#4f8ef7',
-    gradient: 'from-[#4f8ef7] to-[#8b5cf6]',
     displayUrl: 'tudinolearning.com',
     href: 'https://alyssa-website-new.vercel.app/',
     icon: BookOpen,
@@ -37,8 +33,6 @@ const projects = [
     category: 'Real Estate',
     description: 'A polished, professional website for a real estate agent. Highlights property listings, builds trust with an agent bio, and drives inquiries with a streamlined contact experience.',
     tags: ['Web Design', 'Real Estate', 'SEO'],
-    color: '#d97706',
-    gradient: 'from-[#d97706] to-[#92400e]',
     displayUrl: 'sharon-tudino-realty.com',
     href: 'https://sharon-tudino-realty.vercel.app/',
     icon: Home,
@@ -132,10 +126,10 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
       <div className="p-7">
         <div className="flex items-center gap-2 mb-3">
-          <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: `${project.color}20` }}>
-            <Icon size={14} style={{ color: project.color }} strokeWidth={2} />
+          <div className="w-7 h-7 rounded-lg flex items-center justify-center bg-[#4f8ef7]/10">
+            <Icon size={14} className="text-[#4f8ef7]" strokeWidth={2} />
           </div>
-          <div className="text-[11px] font-bold tracking-widest uppercase" style={{ color: project.color }}>
+          <div className="text-[11px] font-bold tracking-widest uppercase text-[#4f8ef7]">
             {project.category}
           </div>
         </div>
@@ -147,8 +141,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="text-[11px] font-semibold px-2.5 py-1 rounded-lg"
-              style={{ background: `${project.color}15`, color: project.color }}
+              className="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-[#4f8ef7]/10 text-[#4f8ef7]"
             >
               {tag}
             </span>
@@ -174,7 +167,7 @@ export default function Work() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             className="section-label mb-4 block"
           >
-            Our Work
+            My Work
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}

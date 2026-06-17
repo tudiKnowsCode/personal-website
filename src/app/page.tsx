@@ -74,7 +74,7 @@ const jsonLd = {
       isPartOf: { '@id': 'https://www.tudino.dev/#website' },
       about: { '@id': 'https://www.tudino.dev/#business' },
       description:
-        'We build visually stunning, conversion-focused websites that make your business impossible to ignore.',
+        'I build visually stunning, conversion-focused websites that make your business impossible to ignore.',
     },
   ],
 }

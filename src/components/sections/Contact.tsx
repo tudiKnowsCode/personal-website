@@ -5,8 +5,8 @@ import { useRef, useState } from 'react'
 import { Mail, MessageSquare, Phone, Send, CheckCircle } from 'lucide-react'
 
 const contactInfo = [
-  { icon: Mail, label: 'Email', value: 'nick@tudino.dev', color: '#4f8ef7' },
-  { icon: Phone, label: 'Phone', value: '+1 (203) 767-0013', color: '#8b5cf6' },
+  { icon: Mail, label: 'Email', value: 'nick@tudino.dev' },
+  { icon: Phone, label: 'Phone', value: '+1 (203) 767-0013' },
 ]
 
 const projectTypes = ['New Website', 'Redesign', 'E-Commerce', 'Web App', 'Branding', 'Other']
@@ -77,7 +77,7 @@ export default function Contact() {
             transition={{ delay: 0.2 }}
             className="text-[#8888aa] text-lg max-w-xl mx-auto"
           >
-            Tell us about your project.
+Tell me about your project.
           </motion.p>
         </div>
 
@@ -93,11 +93,8 @@ export default function Contact() {
               const Icon = item.icon
               return (
                 <div key={item.label} className="glass-card p-6 flex items-start gap-4">
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: `${item.color}18` }}
-                  >
-                    <Icon size={18} style={{ color: item.color }} strokeWidth={1.8} />
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 bg-[#4f8ef7]/10">
+                    <Icon size={18} className="text-[#4f8ef7]" strokeWidth={1.8} />
                   </div>
                   <div>
                     <div className="text-[12px] text-[#8888aa] font-medium mb-0.5">{item.label}</div>
@@ -136,7 +133,7 @@ export default function Contact() {
                   <CheckCircle size={56} className="text-emerald-400 mx-auto mb-4" />
                   <h3 className="text-2xl font-bold text-white mb-2">Message Sent!</h3>
                   <p className="text-[#8888aa]">
-                    Thanks for reaching out. We&apos;ll review your project and get back to you as soon as possible.
+                    Thanks for reaching out. I&apos;ll review your project and get back to you as soon as possible.
                   </p>
                 </div>
               ) : (

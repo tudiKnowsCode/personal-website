@@ -2,44 +2,28 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Globe, ShieldCheck, TrendingUp, Users, Clock, Smartphone, CheckCircle2, ArrowUpRight } from 'lucide-react'
+import { ShieldCheck, TrendingUp, Users, Clock, CheckCircle2, ArrowUpRight } from 'lucide-react'
 
 const benefits = [
   {
-    icon: Globe,
-    title: '24/7 Online Presence',
-    description: 'Your website works while you sleep. Customers can find you, learn about you, and reach out at any hour, without you lifting a finger.',
-    color: '#4f8ef7',
-  },
-  {
     icon: ShieldCheck,
-    title: 'Instant Credibility',
-    description: 'Over 75% of people judge a business\'s legitimacy by its website. A professional site signals that you\'re serious and worth trusting.',
-    color: '#22c55e',
+    title: 'People judge you by it',
+    description: 'Most people look up a business online before they ever call. A sharp, professional site tells them you\'re the real deal before you say a word.',
   },
   {
     icon: TrendingUp,
-    title: 'Get Found on Google',
-    description: 'A properly built site ranks in local search results, putting your business in front of people actively looking for what you offer.',
-    color: '#f59e0b',
+    title: 'It gets you found',
+    description: 'Built right, your site shows up when locals search for what you do, putting you in front of people who are already looking to buy.',
   },
   {
     icon: Users,
-    title: 'Turn Visitors into Clients',
-    description: 'With smart layout and clear calls to action, your site becomes a sales tool that converts curious visitors into paying customers.',
-    color: '#8b5cf6',
+    title: 'It does the selling for you',
+    description: 'A good site answers questions, builds trust, and points people toward booking, all while you\'re busy doing the actual work.',
   },
   {
     icon: Clock,
-    title: 'Save Time on Repetitive Questions',
-    description: 'Put your services, pricing, hours, and FAQs front and center. Spend less time answering the same questions and more time doing the work.',
-    color: '#06b6d4',
-  },
-  {
-    icon: Smartphone,
-    title: 'Compete with Bigger Brands',
-    description: 'A great website levels the playing field. You don\'t need a massive budget. You need the right design and the right developer.',
-    color: '#e11d48',
+    title: 'It works while you don\'t',
+    description: 'Nights, weekends, holidays. Your site is out there earning attention and inquiries when you\'re off the clock.',
   },
 ]
 
@@ -86,12 +70,12 @@ export default function WhyWebsite() {
             transition={{ delay: 0.2 }}
             className="text-[#8888aa] text-lg max-w-2xl mx-auto"
           >
-            In 2024, your website is your most powerful business asset. Here&apos;s why it matters and how I make sure yours actually works for you.
+            For a lot of businesses, the website is the first impression and the hardest-working employee. Here&apos;s why that matters, and how I make sure yours actually pulls its weight.
           </motion.p>
         </div>
 
         {/* Benefits grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-20 max-w-4xl mx-auto">
           {benefits.map((b, i) => {
             const Icon = b.icon
             return (
@@ -102,11 +86,8 @@ export default function WhyWebsite() {
                 transition={{ duration: 0.6, delay: 0.1 + i * 0.08, ease: [0.16, 1, 0.3, 1] }}
                 className="glass-card p-6 group transition-transform duration-300 [@media(hover:hover)]:hover:-translate-y-1"
               >
-                <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center mb-4"
-                  style={{ background: `${b.color}18` }}
-                >
-                  <Icon size={20} style={{ color: b.color }} strokeWidth={1.8} />
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 bg-[#4f8ef7]/10">
+                  <Icon size={20} className="text-[#4f8ef7]" strokeWidth={1.8} />
                 </div>
                 <h3 className="text-[16px] font-bold text-white mb-2">{b.title}</h3>
                 <p className="text-[13px] text-[#8888aa] leading-relaxed">{b.description}</p>

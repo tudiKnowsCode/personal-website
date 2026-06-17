@@ -2,7 +2,8 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { ExternalLink, Leaf, Scale, Croissant, Sparkles } from 'lucide-react'
+import Image from 'next/image'
+import { ExternalLink, Leaf, Scale, Croissant, Sparkles, Scissors } from 'lucide-react'
 
 const concepts = [
   {
@@ -11,10 +12,8 @@ const concepts = [
     description: 'A modern service site for a local landscaping company, built to capture leads, showcase past work, and stand out in a crowded local market.',
     industry: 'Home Services',
     tags: ['Web Design', 'Lead Gen', 'Local SEO'],
-    color: '#22c55e',
-    bgGradient: 'from-[#052e16] via-[#14532d] to-[#052e16]',
-    accentGradient: 'from-[#22c55e] to-[#16a34a]',
     href: 'https://concept-landscaping.vercel.app/',
+    image: '/concept-landscaping.png',
     icon: Leaf,
     highlights: ['Service pages', 'Quote request form', 'Project gallery', 'Google Maps integration'],
   },
@@ -24,12 +23,21 @@ const concepts = [
     description: 'A warm, inviting website for a local deli. Full menu display, location info, and a brand presence that brings customers through the door.',
     industry: 'Food & Beverage',
     tags: ['Web Design', 'Branding', 'Menu Display'],
-    color: '#f59e0b',
-    bgGradient: 'from-[#1c0a00] via-[#451a03] to-[#1c0a00]',
-    accentGradient: 'from-[#f59e0b] to-[#d97706]',
     href: 'https://pan-sobao-2.vercel.app/',
+    image: '/concept-deli.png',
     icon: Croissant,
     highlights: ['Full menu display', 'Brand identity design', 'Location & hours', 'Mobile-first'],
+  },
+  {
+    title: 'NYX Barber Shop',
+    category: 'Barbershop & Grooming',
+    description: 'A clean, modern site for a local barbershop. Showcases services, lets clients book online, and builds the kind of brand presence that keeps chairs full.',
+    industry: 'Health & Beauty',
+    tags: ['Web Design', 'Booking', 'Local SEO'],
+    href: 'https://concept-barber.vercel.app/',
+    image: '/concept-barber.png',
+    icon: Scissors,
+    highlights: ['Service & pricing menu', 'Online booking', 'Barber profiles', 'Gallery'],
   },
   {
     title: 'Ashford & Vane Law Group',
@@ -37,10 +45,8 @@ const concepts = [
     description: 'A polished, trust-first website for a law firm. Clear practice areas, attorney profiles, and a contact experience built to convert serious inquiries.',
     industry: 'Legal',
     tags: ['Web Design', 'Trust-Building', 'Professional'],
-    color: '#6366f1',
-    bgGradient: 'from-[#0f0a1e] via-[#1e1b4b] to-[#0f0a1e]',
-    accentGradient: 'from-[#6366f1] to-[#4f46e5]',
     href: 'https://concept-law-eight.vercel.app/',
+    image: '/concept-law.png',
     icon: Scale,
     highlights: ['Practice areas', 'Attorney bio', 'Contact & intake form', 'Mobile-optimized'],
   },
@@ -75,28 +81,15 @@ function ConceptCard({ concept, index }: { concept: Concept; index: number }) {
           </div>
         </div>
 
-        {/* Gradient preview */}
-        <div className={`absolute inset-x-0 bottom-0 top-8 bg-gradient-to-br ${concept.bgGradient} flex items-center justify-center`}>
-          <div className="text-center">
-            <div
-              className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${concept.accentGradient} flex items-center justify-center mx-auto mb-3`}
-              style={{ boxShadow: `0 8px 32px ${concept.color}40` }}
-            >
-              <Icon size={28} className="text-white" strokeWidth={1.5} />
-            </div>
-            <div className="text-[11px] font-bold tracking-widest uppercase" style={{ color: concept.color }}>
-              {concept.category}
-            </div>
-          </div>
-        </div>
-
-        {/* Concept badge */}
-        <div
-          className="absolute top-10 right-2 z-20 flex items-center gap-1 px-2 py-0.5 rounded text-[9px] font-black tracking-widest uppercase text-white"
-          style={{ background: concept.color }}
-        >
-          <Sparkles size={8} />
-          Concept
+        {/* Screenshot preview */}
+        <div className="absolute inset-x-0 bottom-0 top-8 overflow-hidden">
+          <Image
+            src={concept.image}
+            alt={concept.title}
+            fill
+            className="object-cover object-top"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
         </div>
 
         {/* Hover overlay */}
@@ -110,10 +103,10 @@ function ConceptCard({ concept, index }: { concept: Concept; index: number }) {
 
       <div className="p-7">
         <div className="flex items-center gap-2 mb-3">
-          <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: `${concept.color}20` }}>
-            <Icon size={14} style={{ color: concept.color }} strokeWidth={2} />
+          <div className="w-7 h-7 rounded-lg flex items-center justify-center bg-[#4f8ef7]/10">
+            <Icon size={14} className="text-[#4f8ef7]" strokeWidth={2} />
           </div>
-          <div className="text-[11px] font-bold tracking-widest uppercase" style={{ color: concept.color }}>
+          <div className="text-[11px] font-bold tracking-widest uppercase text-[#4f8ef7]">
             {concept.industry}
           </div>
         </div>
@@ -124,7 +117,7 @@ function ConceptCard({ concept, index }: { concept: Concept; index: number }) {
         <div className="mb-5 space-y-1.5">
           {concept.highlights.map((h) => (
             <div key={h} className="flex items-center gap-2 text-[12px] text-[#666688]">
-              <div className="w-1 h-1 rounded-full flex-shrink-0" style={{ background: concept.color }} />
+              <div className="w-1 h-1 rounded-full flex-shrink-0 bg-[#4f8ef7]" />
               {h}
             </div>
           ))}
@@ -134,8 +127,7 @@ function ConceptCard({ concept, index }: { concept: Concept; index: number }) {
           {concept.tags.map((tag) => (
             <span
               key={tag}
-              className="text-[11px] font-semibold px-2.5 py-1 rounded-lg"
-              style={{ background: `${concept.color}15`, color: concept.color }}
+              className="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-[#4f8ef7]/10 text-[#4f8ef7]"
             >
               {tag}
             </span>
@@ -195,7 +187,7 @@ export default function ConceptWork() {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {concepts.map((c, i) => (
             <ConceptCard key={c.title} concept={c} index={i} />
           ))}

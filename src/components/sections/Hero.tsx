@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowRight, ChevronDown, Sparkles } from 'lucide-react'
+import { ArrowRight, ChevronDown } from 'lucide-react'
 
 const WORDS = ['Converts', 'Captivates', 'Dominates', 'Elevates', 'Performs']
 
@@ -187,7 +187,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.35 }}
           className="text-lg md:text-xl text-[#8888aa] max-w-2xl mx-auto mb-12 leading-relaxed"
         >
-          We build visually stunning, conversion-focused websites that make your business
+          I build visually stunning, conversion-focused websites that make your business
           impossible to ignore. Every pixel crafted for impact. Every interaction engineered for results.
         </motion.p>
 
@@ -202,7 +202,7 @@ export default function Hero() {
             <ArrowRight size={16} className="relative z-10" />
           </a>
           <a href="#work" className="btn-secondary inline-flex items-center gap-2 justify-center">
-            View Our Work
+            View My Work
           </a>
         </motion.div>
 
