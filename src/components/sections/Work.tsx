@@ -15,7 +15,6 @@ const projects = [
     href: 'https://www.dogpoundfit.com',
     icon: Dumbbell,
     image: '/jen.png',
-    underConstruction: false,
   },
   {
     title: 'Tudino Learning',
@@ -23,10 +22,9 @@ const projects = [
     description: 'A clean, trust-building site for a private tutor. Showcases subjects, student success stories, and makes it effortless for parents to book sessions online.',
     tags: ['Web Design', 'Booking', 'SEO'],
     displayUrl: 'tudinolearning.com',
-    href: 'https://alyssa-website-new.vercel.app/',
+    href: 'https://tudinolearning.com',
     icon: BookOpen,
     image: '/alyssa.png',
-    underConstruction: true,
   },
   {
     title: 'Sharon Tudino Real Estate',
@@ -37,7 +35,6 @@ const projects = [
     href: 'https://sharon-tudino-realty.vercel.app/',
     icon: Home,
     image: '/sharon.png',
-    underConstruction: false,
   },
 ]
 
@@ -51,31 +48,6 @@ function SitePreview({ src, alt }: { src: string; alt: string }) {
         className="object-cover object-top"
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
       />
-    </div>
-  )
-}
-
-function UnderConstructionOverlay() {
-  const label = '⚠ UNDER CONSTRUCTION'
-  return (
-    <div className="absolute inset-x-0 bottom-0 top-8 z-20 pointer-events-none flex items-center justify-center overflow-hidden">
-      <div
-        className="w-[160%] py-2.5 flex items-center gap-8 flex-shrink-0"
-        style={{
-          background: '#FACC15',
-          transform: 'rotate(-12deg)',
-          boxShadow: '0 6px 24px rgba(0,0,0,0.5)',
-        }}
-      >
-        {Array.from({ length: 8 }).map((_, i) => (
-          <span
-            key={i}
-            className="text-black font-black text-[11px] tracking-[0.2em] uppercase whitespace-nowrap flex-shrink-0"
-          >
-            {label}
-          </span>
-        ))}
-      </div>
     </div>
   )
 }
@@ -111,9 +83,6 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
         {/* Site preview image */}
         <SitePreview src={project.image} alt={project.title} />
-
-        {/* Under construction overlay */}
-        {project.underConstruction && <UnderConstructionOverlay />}
 
         {/* Hover overlay */}
         <div className="absolute inset-0 bg-[#07070f]/85 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pt-8 z-30">
