@@ -3,18 +3,18 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import Image from 'next/image'
-import { ExternalLink, Dumbbell, BookOpen, Home } from 'lucide-react'
+import { ExternalLink, Car, BookOpen, Home, Dumbbell } from 'lucide-react'
 
 const projects = [
   {
-    title: 'Dogpound Strength & Fitness',
-    category: 'Gym & Personal Training',
-    description: 'A bold, high-energy website for a personal training brand built to convert visitors into members. Features class schedules, trainer profiles, and a seamless online inquiry flow.',
-    tags: ['Web Design', 'Mobile-First', 'Branding'],
-    displayUrl: 'www.dogpoundfit.com',
-    href: 'https://www.dogpoundfit.com',
-    icon: Dumbbell,
-    image: '/jen.png',
+    title: "Tony's Imported Auto Service",
+    category: 'European Auto Repair',
+    description: 'A credibility-first site for an import specialist serving Manchester since 1979. Leads with the makes they service, backs it up with real shop photos and reviews, and turns visitors into booked appointments.',
+    tags: ['Web Design', 'Local SEO', 'Booking'],
+    displayUrl: 'tonysimportedauto.com',
+    href: 'https://tonysimportedauto.com',
+    icon: Car,
+    image: '/tonys.png',
   },
   {
     title: 'Tudino Learning',
@@ -35,6 +35,16 @@ const projects = [
     href: 'https://sharon-tudino-realty.vercel.app/',
     icon: Home,
     image: '/sharon.png',
+  },
+  {
+    title: 'Dogpound Strength & Fitness',
+    category: 'Gym & Personal Training',
+    description: 'A bold, high-energy website for a personal training brand built to convert visitors into members. Features class schedules, trainer profiles, and a seamless online inquiry flow.',
+    tags: ['Web Design', 'Mobile-First', 'Branding'],
+    displayUrl: 'www.dogpoundfit.com',
+    href: 'https://www.dogpoundfit.com',
+    icon: Dumbbell,
+    image: '/jen.png',
   },
 ]
 
@@ -71,7 +81,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       className="glass-card overflow-hidden group cursor-pointer transition-transform duration-300 [@media(hover:hover)]:hover:-translate-y-1 block"
     >
       {/* Mock browser window */}
-      <div className="relative h-56 overflow-hidden">
+      <div className="relative h-64 overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-8 bg-[#0d0d1a] flex items-center px-3 gap-1.5 z-10">
           <div className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
           <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
@@ -157,7 +167,7 @@ export default function Work() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {projects.map((p, i) => (
             <ProjectCard key={p.title} project={p} index={i} />
           ))}
