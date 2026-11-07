@@ -22,11 +22,10 @@ const InstagramIcon = () => (
 )
 
 const navLinks = [
-  { label: 'Services', href: '#services' },
-  { label: 'Work', href: '#work' },
-  { label: 'Concepts', href: '#concepts' },
-  { label: 'Process', href: '#process' },
-  { label: 'About', href: '#about' },
+  { label: 'Services', href: '/#services' },
+  { label: 'Work', href: '/work' },
+  { label: 'Process', href: '/#process' },
+  { label: 'About', href: '/#about' },
 ]
 
 export default function Footer() {
@@ -42,7 +41,7 @@ export default function Footer() {
             Your next chapter starts{' '}
             <span className="gradient-text">with a great website.</span>
           </h2>
-          <a href="#contact" className="btn-primary inline-flex items-center gap-2">
+          <a href="/#contact" className="btn-primary inline-flex items-center gap-2">
             <span className="relative z-10">Start Your Project</span>
             <ArrowUpRight size={16} className="relative z-10" />
           </a>
@@ -52,7 +51,7 @@ export default function Footer() {
       <div className="relative max-w-7xl mx-auto px-6 py-12">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-10 mb-12">
           <div className="col-span-2 md:col-span-1">
-            <a href="#" className="flex items-center gap-2 mb-4">
+            <a href="/" className="flex items-center gap-2 mb-4">
               <Image src="/logo.png" alt="Tudino Web Development" width={32} height={32} className="rounded-lg" />
               <span className="font-bold text-[15px] text-white">
                 Tudino<span className="text-[#4f8ef7]">.</span>dev

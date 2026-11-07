@@ -3,50 +3,9 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import Image from 'next/image'
-import { ExternalLink, Car, BookOpen, Home, Dumbbell } from 'lucide-react'
-
-const projects = [
-  {
-    title: "Tony's Imported Auto Service",
-    category: 'European Auto Repair',
-    description: 'A credibility-first site for an import specialist serving Manchester since 1979. Leads with the makes they service, backs it up with real shop photos and reviews, and turns visitors into booked appointments.',
-    tags: ['Web Design', 'Local SEO', 'Booking'],
-    displayUrl: 'tonysimportedauto.com',
-    href: 'https://tonysimportedauto.com',
-    icon: Car,
-    image: '/tonys.png',
-  },
-  {
-    title: 'Tudino Learning',
-    category: 'Education & Tutoring',
-    description: 'A clean, trust-building site for a private tutor. Showcases subjects, student success stories, and makes it effortless for parents to book sessions online.',
-    tags: ['Web Design', 'Booking', 'SEO'],
-    displayUrl: 'tudinolearning.com',
-    href: 'https://tudinolearning.com',
-    icon: BookOpen,
-    image: '/alyssa.png',
-  },
-  {
-    title: 'Sharon Tudino Real Estate',
-    category: 'Real Estate',
-    description: 'A polished, professional website for a real estate agent. Highlights property listings, builds trust with an agent bio, and drives inquiries with a streamlined contact experience.',
-    tags: ['Web Design', 'Real Estate', 'SEO'],
-    displayUrl: 'sharon-tudino-realty.com',
-    href: 'https://sharon-tudino-realty.vercel.app/',
-    icon: Home,
-    image: '/sharon.png',
-  },
-  {
-    title: 'Dogpound Strength & Fitness',
-    category: 'Gym & Personal Training',
-    description: 'A bold, high-energy website for a personal training brand built to convert visitors into members. Features class schedules, trainer profiles, and a seamless online inquiry flow.',
-    tags: ['Web Design', 'Mobile-First', 'Branding'],
-    displayUrl: 'www.dogpoundfit.com',
-    href: 'https://www.dogpoundfit.com',
-    icon: Dumbbell,
-    image: '/jen.png',
-  },
-]
+import Link from 'next/link'
+import { ExternalLink, ArrowRight } from 'lucide-react'
+import { featuredProjects, type Project } from '@/data/portfolio'
 
 function SitePreview({ src, alt }: { src: string; alt: string }) {
   return (
@@ -62,9 +21,7 @@ function SitePreview({ src, alt }: { src: string; alt: string }) {
   )
 }
 
-type Project = typeof projects[0]
-
-function ProjectCard({ project, index }: { project: Project; index: number }) {
+export function ProjectCard({ project, index }: { project: Project; index: number }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-60px' })
   const Icon = project.icon
@@ -168,7 +125,7 @@ export default function Work() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-          {projects.map((p, i) => (
+          {featuredProjects.map((p, i) => (
             <ProjectCard key={p.title} project={p} index={i} />
           ))}
         </div>
@@ -180,8 +137,12 @@ export default function Work() {
           transition={{ delay: 0.5 }}
           className="text-center mt-14"
         >
+          <Link href="/work" className="btn-secondary inline-flex items-center gap-2 mb-10">
+            View Full Portfolio
+            <ArrowRight size={16} />
+          </Link>
           <p className="text-[#8888aa] mb-4 text-sm">Your business could be next.</p>
-          <a href="#contact" className="btn-primary inline-flex items-center gap-2">
+          <a href="/#contact" className="btn-primary inline-flex items-center gap-2">
             <span className="relative z-10">Start Your Project</span>
           </a>
         </motion.div>

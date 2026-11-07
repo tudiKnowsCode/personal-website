@@ -6,12 +6,11 @@ import { Menu, X } from 'lucide-react'
 import Image from 'next/image'
 
 const links = [
-  { label: 'Services', href: '#services' },
-  { label: 'About', href: '#about' },
-  { label: 'Process', href: '#process' },
-  { label: 'Work', href: '#work' },
-  { label: 'Concepts', href: '#concepts' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Services', href: '/#services' },
+  { label: 'About', href: '/#about' },
+  { label: 'Process', href: '/#process' },
+  { label: 'Work', href: '/work' },
+  { label: 'Contact', href: '/#contact' },
 ]
 
 export default function Navbar() {
@@ -37,7 +36,7 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          <a href="#" className="flex items-center gap-2 group">
+          <a href="/" className="flex items-center gap-2 group">
             <Image src="/logo.png" alt="Tudino Web Development" width={32} height={32} className="rounded-lg" />
             <span className="font-bold text-[15px] tracking-tight text-white">
               Tudino<span className="text-[#4f8ef7]">.</span>dev
@@ -62,7 +61,7 @@ export default function Navbar() {
 
           <div className="hidden md:flex items-center gap-3">
             <motion.a
-              href="#contact"
+              href="/#contact"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
@@ -99,7 +98,7 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
-            <a href="#contact" onClick={() => setMobileOpen(false)} className="btn-primary mt-4">
+            <a href="/#contact" onClick={() => setMobileOpen(false)} className="btn-primary mt-4">
               <span className="relative z-10">Get a Quote</span>
             </a>
           </motion.div>

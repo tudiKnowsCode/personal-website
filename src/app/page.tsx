@@ -4,7 +4,6 @@ import Services from '@/components/sections/Services'
 import About from '@/components/sections/About'
 import Process from '@/components/sections/Process'
 import Work from '@/components/sections/Work'
-import ConceptWork from '@/components/sections/ConceptWork'
 import WhyWebsite from '@/components/sections/WhyWebsite'
 import Contact from '@/components/sections/Contact'
 import Footer from '@/components/Footer'
@@ -93,7 +92,6 @@ export default function Home() {
         <About />
         <Process />
         <Work />
-        <ConceptWork />
         <WhyWebsite />
         <Contact />
       </main>

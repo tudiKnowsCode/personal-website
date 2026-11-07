@@ -3,56 +3,8 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import Image from 'next/image'
-import { ExternalLink, Leaf, Scale, Croissant, Sparkles, Scissors } from 'lucide-react'
-
-const concepts = [
-  {
-    title: 'Grove & Stone Landscaping',
-    category: 'Landscaping & Lawn Care',
-    description: 'A modern service site for a local landscaping company, built to capture leads, showcase past work, and stand out in a crowded local market.',
-    industry: 'Home Services',
-    tags: ['Web Design', 'Lead Gen', 'Local SEO'],
-    href: 'https://concept-landscaping.vercel.app/',
-    image: '/concept-landscaping.png',
-    icon: Leaf,
-    highlights: ['Service pages', 'Quote request form', 'Project gallery', 'Google Maps integration'],
-  },
-  {
-    title: 'Puerto Rican Deli',
-    category: 'Deli & Sandwich Shop',
-    description: 'A warm, inviting website for a local deli. Full menu display, location info, and a brand presence that brings customers through the door.',
-    industry: 'Food & Beverage',
-    tags: ['Web Design', 'Branding', 'Menu Display'],
-    href: 'https://pan-sobao-2.vercel.app/',
-    image: '/concept-deli.png',
-    icon: Croissant,
-    highlights: ['Full menu display', 'Brand identity design', 'Location & hours', 'Mobile-first'],
-  },
-  {
-    title: 'NYX Barber Shop',
-    category: 'Barbershop & Grooming',
-    description: 'A clean, modern site for a local barbershop. Showcases services, lets clients book online, and builds the kind of brand presence that keeps chairs full.',
-    industry: 'Health & Beauty',
-    tags: ['Web Design', 'Booking', 'Local SEO'],
-    href: 'https://concept-barber.vercel.app/',
-    image: '/concept-barber.png',
-    icon: Scissors,
-    highlights: ['Service & pricing menu', 'Online booking', 'Barber profiles', 'Gallery'],
-  },
-  {
-    title: 'Ashford & Vane Law Group',
-    category: 'Legal Services',
-    description: 'A polished, trust-first website for a law firm. Clear practice areas, attorney profiles, and a contact experience built to convert serious inquiries.',
-    industry: 'Legal',
-    tags: ['Web Design', 'Trust-Building', 'Professional'],
-    href: 'https://concept-law-eight.vercel.app/',
-    image: '/concept-law.png',
-    icon: Scale,
-    highlights: ['Practice areas', 'Attorney bio', 'Contact & intake form', 'Mobile-optimized'],
-  },
-]
-
-type Concept = typeof concepts[0]
+import { ExternalLink, Sparkles } from 'lucide-react'
+import { concepts, type Concept } from '@/data/portfolio'
 
 function ConceptCard({ concept, index }: { concept: Concept; index: number }) {
   const ref = useRef(null)
@@ -200,7 +152,7 @@ export default function ConceptWork() {
           className="text-center mt-14"
         >
           <p className="text-[#8888aa] mb-4 text-sm">Don&apos;t see your industry? Let&apos;s talk.</p>
-          <a href="#contact" className="btn-primary inline-flex items-center gap-2">
+          <a href="/#contact" className="btn-primary inline-flex items-center gap-2">
             <span className="relative z-10">Get Your Custom Site</span>
           </a>
         </motion.div>
