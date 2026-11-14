@@ -1,38 +1,31 @@
 import type { Config } from 'tailwindcss'
 
+// Navy (from the logo), white and cool greys. No accent color on purpose:
+// emphasis comes from weight, size and underlines. Text colors pass WCAG AA on their backgrounds.
 const config: Config = {
-  content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
+  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {
       colors: {
-        midnight: '#07070f',
-        'electric-blue': '#4f8ef7',
-        'electric-violet': '#8b5cf6',
-        'neon-cyan': '#06b6d4',
-        'deep-purple': '#1e1b4b',
-      },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
-      animation: {
-        'float': 'float 6s ease-in-out infinite',
-        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'blink': 'blink 1s step-end infinite',
-      },
-      keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-20px)' },
+        navy: {
+          DEFAULT: '#0F1A2E',
+          deep: '#0A1222',
+          mid: '#1B2A47',
+          line: '#2E3E60',
+          muted: '#B4BCCB',
         },
-        blink: {
-          '0%, 100%': { opacity: '1' },
-          '50%': { opacity: '0' },
+        grey: {
+          bg: '#EDEFF2',
+          line: '#D6DAE1',
+          text: '#48505F',
+          muted: '#5F6776',
         },
+      },
+      fontFamily: {
+        sans: ['var(--font-archivo)', 'Arial', 'sans-serif'],
+      },
+      maxWidth: {
+        site: '76rem',
       },
     },
   },

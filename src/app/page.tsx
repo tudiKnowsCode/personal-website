@@ -1,101 +1,100 @@
-import Navbar from '@/components/Navbar'
-import Hero from '@/components/sections/Hero'
-import Services from '@/components/sections/Services'
-import About from '@/components/sections/About'
-import Process from '@/components/sections/Process'
-import Work from '@/components/sections/Work'
-import WhyWebsite from '@/components/sections/WhyWebsite'
-import Contact from '@/components/sections/Contact'
-import Footer from '@/components/Footer'
+import type { Metadata } from 'next'
+import JsonLd from '@/components/JsonLd'
+import Edge from '@/components/Edge'
+import Hero from '@/components/home/Hero'
+import HowIHelp from '@/components/home/HowIHelp'
+import WorkSection from '@/components/home/WorkSection'
+import Testimonials from '@/components/home/Testimonials'
+import Services from '@/components/home/Services'
+import Process from '@/components/home/Process'
+import About from '@/components/home/About'
+import Faq from '@/components/home/Faq'
+import Contact from '@/components/home/Contact'
+import { site } from '@/data/site'
+import { faqs } from '@/data/faq'
+import { testimonials } from '@/data/testimonials'
+import { pageMeta } from '@/lib/seo'
+
+export const metadata: Metadata = pageMeta({
+  title: `Web Design in ${site.area} | ${site.name}`,
+  description: `Websites that help small businesses get found on Google, earn trust and turn visitors into calls, bookings and orders. Designed and built in Connecticut by ${site.owner}. Free quotes.`,
+  path: '/',
+})
+
+const businessId = `${site.url}/#business`
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'LocalBusiness',
-      '@id': 'https://www.tudino.dev/#business',
-      name: 'Tudino Web Development',
+      '@type': 'ProfessionalService',
+      '@id': businessId,
+      name: site.name,
       description:
-        'Premium web design and development for small businesses and entrepreneurs. Custom websites built to convert visitors into clients.',
-      url: 'https://www.tudino.dev',
-      telephone: '+12037670013',
-      email: 'nick@tudino.dev',
-      founder: {
-        '@type': 'Person',
-        name: 'Nicholas Tudino',
-        jobTitle: 'Founder & Lead Developer',
-        url: 'https://www.tudino.dev/#about',
-        sameAs: [
-          'https://github.com/tudiKnowsCode',
-          'https://www.linkedin.com/in/ntudino/',
-          'https://www.instagram.com/tudinowebdev/',
-        ],
-      },
+        'Custom web design and development for small businesses in Connecticut: fast, mobile-first websites with local SEO, booking and ordering.',
+      url: site.url,
+      logo: `${site.url}/logo.png`,
+      image: `${site.url}/headshot.webp`,
+      telephone: site.phoneE164,
+      email: site.email,
       address: {
         '@type': 'PostalAddress',
-        addressLocality: 'Manchester',
-        addressRegion: 'CT',
+        addressLocality: site.city,
+        addressRegion: site.region,
         addressCountry: 'US',
       },
-      areaServed: {
-        '@type': 'Country',
-        name: 'United States',
+      areaServed: { '@type': 'State', name: site.area },
+      sameAs: Object.values(site.socials),
+      founder: {
+        '@type': 'Person',
+        name: site.ownerFullName,
+        jobTitle: 'Founder & Lead Developer',
+        url: `${site.url}/#about`,
+        sameAs: [site.socials.linkedin, site.socials.github],
       },
-      serviceType: [
-        'Web Design',
-        'Web Development',
-        'E-Commerce Development',
-        'Brand Identity',
-        'SEO',
-        'Website Maintenance',
-      ],
-      priceRange: '$$',
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: '5',
-        reviewCount: '2',
-        bestRating: '5',
-      },
+      knowsAbout: ['Web design', 'Web development', 'Local SEO', 'Online booking', 'E-commerce', 'Branding'],
     },
     {
       '@type': 'WebSite',
-      '@id': 'https://www.tudino.dev/#website',
-      url: 'https://www.tudino.dev',
-      name: 'Tudino Web Development',
-      description: 'Premium web design and development for ambitious businesses.',
-      publisher: { '@id': 'https://www.tudino.dev/#business' },
+      '@id': `${site.url}/#website`,
+      url: site.url,
+      name: site.name,
+      publisher: { '@id': businessId },
     },
     {
-      '@type': 'WebPage',
-      '@id': 'https://www.tudino.dev/#webpage',
-      url: 'https://www.tudino.dev',
-      name: 'Tudino Web Development | Premium Websites for Ambitious Businesses',
-      isPartOf: { '@id': 'https://www.tudino.dev/#website' },
-      about: { '@id': 'https://www.tudino.dev/#business' },
-      description:
-        'I build visually stunning, conversion-focused websites that make your business impossible to ignore.',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
     },
   ],
 }
 
+const hasReviews = testimonials.length > 0
+
 export default function Home() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <Navbar />
-      <main>
-        <Hero />
-        <Services />
-        <About />
-        <Process />
-        <Work />
-        <WhyWebsite />
-        <Contact />
-      </main>
-      <Footer />
+      <JsonLd data={jsonLd} />
+      <Hero />
+      <Edge from="navy" to="white" shape="rise" />
+      <HowIHelp />
+      <Edge from="white" to="grey" shape="fall" />
+      <WorkSection />
+      {hasReviews && <Edge from="grey" to="white" shape="rise" />}
+      <Testimonials />
+      <Edge from={hasReviews ? 'white' : 'grey'} to="navy" shape="fall" />
+      <Process />
+      <Edge from="navy" to="white" shape="rise" />
+      <Services />
+      <Edge from="white" to="grey" shape="fall" />
+      <About />
+      <Edge from="grey" to="white" shape="rise" />
+      <Faq />
+      <Edge from="white" to="navy" shape="fall" />
+      <Contact />
     </>
   )
 }

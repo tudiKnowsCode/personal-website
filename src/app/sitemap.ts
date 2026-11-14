@@ -1,18 +1,15 @@
-import { MetadataRoute } from 'next'
+import type { MetadataRoute } from 'next'
+import { projects } from '@/data/portfolio'
+import { site } from '@/data/site'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
-    {
-      url: 'https://www.tudino.dev',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 1,
-    },
-    {
-      url: 'https://www.tudino.dev/work',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
+    { url: site.url, changeFrequency: 'monthly', priority: 1 },
+    { url: `${site.url}/work`, changeFrequency: 'monthly', priority: 0.8 },
+    ...projects.map((p) => ({
+      url: `${site.url}/work/${p.slug}`,
+      changeFrequency: 'yearly' as const,
+      priority: 0.6,
+    })),
   ]
 }
